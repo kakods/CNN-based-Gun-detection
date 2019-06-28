@@ -406,7 +406,7 @@ def show_results(learn, start=0, n=3, detect_thresh=0.35, figsize=(10,25)):
         img,bbox = learn.data.valid_ds[start+i]
         #img.show(ax=axs[i,0], y=bbox)
         show_preds(img, z, start+i, detect_thresh=detect_thresh, classes=learn.data.classes, ax=axs[i])
-def gun_detection_on_video(name,detect_thresh):
+def gun_detection_on_video(learn,name,detect_thresh):
   cap= cv2.VideoCapture(name)
   i=0
   while (cap.isOpened()):
@@ -454,7 +454,7 @@ def gun_detection_on_video(name,detect_thresh):
     out.write(frame)
   out.release()
   
-def gun_detection_on_image(name,detect_thresh):
+def gun_detection_on_image(learn,name,detect_thresh):
       frame= cv2.imread(f'{name}')
       im=open_image(f'{name}')
       (H, W) =im.shape[:2]
